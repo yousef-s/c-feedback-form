@@ -98,8 +98,3 @@ export const useForm = <T>(
     clear
   };
 };
-
-// Turn into a hook
-export const isCurrentFormValid = (...validities: boolean[]): boolean => {
-  return validities.every(validity => validity);
-};
