@@ -1,44 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Feedback Form
 
-## Available Scripts
+This POC provides a feedback form (with basic validation), a set of latest comments and a trend graph displaying the count of each feedback rating.
 
-In the project directory, you can run:
+## Running
 
-### `yarn start`
+Clone the repository and then...
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To install dependencies:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```sh
+yarn install
+````
 
-### `yarn test`
+**To make this POC simple to run/interact with I've introduced some mock comments.**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run a development server (with mock data), will load in browser as localhost:3000:
 
-### `yarn build`
+```sh
+yarn run start:mock
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run a development server, will load in browser as localhost:3000:
+```sh
+yarn run start
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+To run tests:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+yarn test
+```
 
-### `yarn eject`
+## Overview & Project Architecture
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Use of create-react-app due to POC nature
+- Segmentation of React components into atoms (re-usable small abstractions on HTML good for a component library) and views (composite atoms/HTML with their own contextual components - to be mounted as view/nav states)
+- Creation of custom react hooks for form control to abstract away form logic from components to keep them light
+- Use of co-located CSS modules for styling
+- Jest/react-testing-library unit/integration tests focusing on component states/behaviours
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Productionisation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+When building this app for production, here's a short list of some of the things I would add/do differently.
 
-## Learn More
+### Build/Development workflow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Ejection from create-react-app for more control
+- Introduce code formatting (prettier)
+- Introduce git hooks to run lightweight formatting/linting checks as appropriate before commit or push
+- Consider introducing better project-file module management (e.g. typescript aliases) to supplant verbose relative imports
+- CI/CD pipeline with quality gates (e.g. automation tests, code quality checks, etc)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Components
+
+- Extraction of atoms to a component library, wrapped in a viewer (e.g. storybook) to ensure sharing components across projects happens as the appropriate level with visibility
+- Swap out form control for [Formik](https://jaredpalmer.com/formik) a widely used and battle tested library for form building in React, creating appropriate abstractions as needed.
+
+### Styling
+
+- Introduce a CSS pre-processor (e.g. Sass) for better style composition and common styles (e.g. color palettes, layouts, etc)
+
+### Data
+
+- Defining a state management architecture (however this is a single view) ensuring that local component state/global client-side state is used as appropriate (e.g. redux, mobx, graphql client etc)
+
+### Testing
+
+- Define a thorough testing strategy across the testing pyramid assessing what tool should be used where along with cost/benefit analysis of maintainability and visibility vs. running time/cost
+- ^ Potentially swapping out react-testing-library in-memory integration tests for Cypress run browser tests
+
+### General
+
+- Ensuring accessibility standards are met and introduction of accessibility automated testing (a11y)
+- Perf testing components, ensuring that they are wrapped as appropriate/unneccessary re-renders don't occur
+- Logging as appropriate, pushing logs to a third party logging tool along with source-maps (reduce mean-time to discovery/resolution)
+- Ensuring bundle size is as minimal as possible (e.g. tree-shaking)
+- Introducing top-level error boundaries to prevent user's ever being in an unhandled state
