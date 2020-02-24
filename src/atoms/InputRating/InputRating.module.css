@@ -1,0 +1,8 @@
+.item {
+  cursor: pointer;
+  opacity: 0.3
+}
+
+.selected {
+  opacity: 1;
+}
