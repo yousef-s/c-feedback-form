@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Larry Page",
+    "email": "larry@google.com",
+    "rating": 5,
+    "timestamp": 1582307625190,
+    "comment": "Hey, I used to be CEO at Google! I love your product"
+  },
+  {
+    "name": "Mark Zuckerberg",
+    "email": "mark@fb.com",
+    "rating": 4,
+    "timestamp": 1582307625190,
+    "comment": "Hey, this product is quite cool - but I'm having some issues?"
+  },
+  {
+    "name": "Donald Trump",
+    "email": "donaldt@gov.us",
+    "rating": 5,
+    "timestamp": 1582307625190,
+    "comment": "As Mr. President, this is the best, the absolute best thing I've ever seen"
+  },
+  {
+    "name": "Mr. Robot",
+    "email": "mr@r0b0t.com",
+    "rating": 1,
+    "timestamp": 1582307625190,
+    "comment": "Didn't work, I need some help please"
+  },
+  {
+    "name": "Sean Combs",
+    "email": "sean@seancombs.com",
+    "rating": 2,
+    "timestamp": 1582307625190,
+    "comment": "This is cool, but I'm sure it can be improved by doing A, B and C"
+  },
+  {
+    "name": "Elon Musk",
+    "email": "em@tesla.com",
+    "rating": 5,
+    "timestamp": 1582307625190,
+    "comment": "Almost as cool as my new Tesla"
+  }
+]
